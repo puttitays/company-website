@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'pages/windowstyle.css' %}">
 </head>
 <body>
 <header>
+
+
 <a href="{% url 'home' %}">Home</a> |
 <a href="{% url 'about' %}">About</a>
+
 </header>
 {% block content %}{% endblock %}
 </body>

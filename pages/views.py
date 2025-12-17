@@ -32,3 +32,7 @@ def payment_view(request) :# new
 
 def address_view(request) :# new
     return render(request, "address.html")
+
+
+def swishqrcode_view(request) :# new
+    return render(request, "swishqrcode.html")

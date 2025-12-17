@@ -1,33 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Puttita</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.5">
-<!--    <meta http-equiv="refresh" content="60">-->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-
-</head>
-<body class="roboto-<uniquifier>">
-<header class="header">
-<h1 id="quote"></h1>
-</header>
-
-<nav>
-    <a href="Puttita-Personal.html"><span class="material-symbols-outlined">home</span></a>
-    <a href=""><span class="material-symbols-outlined">search</span></a>
-    <a href=""><span class="material-symbols-outlined">alarm</span></a>
-    <a href="window.html"><span class="material-symbols-outlined">window</span></a>
-    <a href="payment.html"><span class="material-symbols-outlined">payments</span></a>
-    <a href="address.html"><span class="material-symbols-outlined">map_search</span></a>
-
-</nav>
-
+{% extends "base.html"%}
+{% load static %}
+{% block content %}
 <p style="text-align:center;" >Scan QR code here to make a payment</p>
 
 
@@ -83,7 +57,7 @@ text:paymentsummary
 
     document.getElementById("finalmethod").addEventListener("click",function(){
     if (this.textContent==="Place order with : Swish"){
-     window.location.href="swishqrcode.html";
+     window.location.href="{% url 'swishqrcode' %}";
 
 
     }else {
@@ -101,5 +75,5 @@ text:paymentsummary
 
 
 
-</body>
-</html>
+
+{% endblock %}

@@ -34,7 +34,7 @@
     document.getElementById("finalmethod").addEventListener("click",function(event){
     event.preventDefault();
     if (this.textContent==="Place order with : Swish"){console.log(this.textContent);
-     window.location.href="swishqrcode.html"
+     window.location.href="{% url 'swishqrcode' %}";
 
 
     }else {

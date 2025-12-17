@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<p style="text-align:center;" >fill your address</p>
+
+<form>
+    <label for ="fname">First name</label>
+    <input type="text" id="fname" style="border-radius:4px"><br><br>
+    <label for ="lname">Last name</label>
+    <input type="text" id="lname" style="border-radius:4px" ><br><br>
+    <label for ="phone">Phone no.</label>
+    <input type="text" id="phone" style="border-radius:4px"><br><br>
+    <label for ="street">Street address</label>
+    <input type="text" id="street" style="border-radius:4px"><br><br>
+    <label for ="postal">Postal code</label>
+    <input type="text" id="postal" style="border-radius:4px"><br><br>
+        <label for ="city">City</label>
+    <input id="input" type="text" list="city" style="border-radius:4px"><br><br>
+    <datalist id="city">
+
+    </datalist>
+
+
+</form>
+
+<script>
+    const citylist=["Alingsås","Arboga","Arvika","Askersund","Avesta","Boden","Bollnäs","Borgholm","Borlänge","Borås","Djursholm",
+
+    'Eksjö','Enköping','Eskilstuna','Eslöv','Fagersta','Falkenberg','Falköping','Falsterbo','Falun','Filipstad','Flen',
+
+
+    'Gothenburg','Gränna','Gävle','Hagfors','Halmstad','Haparanda','Hedemora','Helsingborg','Hjo','Hudiksvall','Huskvarna',
+
+'Härnösand','Hässleholm','Höganäs','Jönköping','Kalmar','Karlshamn','Karlskoga','Karlskrona','Karlstad','Katrineholm',
+
+'Kiruna','Kramfors','Kristianstad','Kristinehamn','Kumla','Kungsbacka','Kungälv','Köping','Laholm','Landskrona','Lidingö',
+'Lidköping','Lindesberg','Linköping','Ljungby','Ludvika','Luleå','Lund','Lycksele','Lysekil','Malmö','Mariefred','Mariestad',
+
+'Marstrand','Mjölby','Motala','Nacka','Nora','Norrköping','Norrtälje','Nybro','Nyköping','Nynäshamn','Nässjö','Oskarshamn',
+
+'Oxelösund','Piteå','Ronneby','Sala','Sandviken','Sigtuna','Simrishamn','Skanör','Skanör med Falsterbo','Skara','Skellefteå',
+'Skänninge','Skövde','Sollefteå','Solna','Stockholm','Strängnäs','Strömstad','Sundbyberg','Sundsvall','Säffle',
+
+'Säter','Sävsjö','Söderhamn','Söderköping','Södertälje','Sölvesborg','Tidaholm','Torshälla','Tranås','Trelleborg',
+
+
+'Trollhättan','Trosa','Uddevalla','Ulricehamn','Umeå','Uppsala','Vadstena','Varberg','Vaxholm','Vetlanda','Vimmerby',
+
+'Visby','Vänersborg','Värnamo','Västervik','Västerås','Växjö','Ystad','Åmål','Ängelholm','Örebro','Öregrund','Örnsköldsvik',
+
+'Östersund','Östhammar'
+    ]
+    const cities=document.getElementById("city")
+    for (i=0;i<=citylist.length;i++){ a=document.createElement("option")
+    a.textContent=citylist[i]
+
+    cities.appendChild(a)
+
+
+
+    }
+    const input=document.getElementById("input")
+
+    input.addEventListener("input",function(){
+
+    console.log(input.value);
+
+    })
+
+
+
+
+</script>
+
+
+
+
+
+{% endblock %}

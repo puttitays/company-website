@@ -1,17 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static %}
+
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="{% static 'pages/windowstyle.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.5">
+<!--    <meta http-equiv="refresh" content="60">-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
+<h1>Company Homepage</h1>
+
+<nav>
+    <a href="{% url 'window' %}"><span class="material-symbols-outlined">window</span></a>
+    <a href="{% url 'payment' %}"><span class="material-symbols-outlined">payments</span></a>
+    <a href="{% url 'address' %}"><span class="material-symbols-outlined">map_search</span></a>
 
 
-<a href="{% url 'home' %}">Home</a> |
-<a href="{% url 'about' %}">About</a>
+
+</nav>
 
 </header>
 {% block content %}{% endblock %}

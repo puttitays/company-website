@@ -1,0 +1,368 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<div style="display:flex;gap: 20px;align-items:flex-start;">
+
+
+
+
+
+
+
+    <div>
+
+        <form id="window" style="display:inline-block;margin-bottom: 20px ">
+        <label for ="products">Select product</label>
+        <select id="products" style="background-color:black;color:white;font-family:Roboto Mono,monospace ;font-size:15px ; border:2px solid;border-radius: 8px; ">
+
+            <option>Window</option>
+        <option>Door</option>
+        </select><br><br>
+
+            <label for="colors">Color:</label>
+            <input type="radio" id="white" value="white" name="color" style="accent-color:Gray;">
+            <label for="white">White</label>
+            <input type="radio" id="Wood brown" value="Wood brown" style="accent-color: #BD8753;" name="color">
+            <label for="white">Wood brown</label>
+            <input type="radio" id="red" value="red"  style="accent-color: red;" name="color" >
+            <label for="white">red</label>
+
+
+            <br>   <br>
+        <label for="windowwidth">Width </label>
+        <input type="range" min="10" max="30" step="0.1" id="windowwidth" style="accent-color: yellow;">
+        <span id="window_widthoutput">50</span> <span>cm</span><br><br>
+        <label for="windowheight">Height </label>
+        <input type="range" min="10" max="30" step="0.1" id="windowheight" style="accent-color: yellow;">
+         <span id="window_heightoutput">50</span> <span>cm</span><br><br>
+
+
+
+                  <label for="glass">Glass layers:</label>
+            <input type="radio" id="1" name="layers" style="accent-color:black;">
+            <label for="1">One</label>
+            <input type="radio" id="2"  name="layers" style="accent-color:black;">
+            <label for="2">Two</label>
+            <input type="radio" id="3" name="layers" style="accent-color:black;" >
+            <label for="3">Three</label>
+            <input type="radio" id="4" name="layers" style="accent-color:black;" >
+            <label for="4">Four</label>
+        <br><br>
+                <label for="window_quantity">quantity</label>
+        <input type="range" min="1" max="100" step="1" value="50" id="window_quantity" style="accent-color: yellow;">
+        <span id="window_quantity_output">50</span><span> pieces</span><br><br>
+        <br>
+
+         <textarea style="height:60px;width:300px;vertical-align:top;"
+         placeholder="insert your note here"
+
+         ></textarea>
+        <br><br>
+
+         <button type="submit" id="finaladd">Add</button>
+         </form>
+
+
+
+
+
+    </div>
+
+    <div style="display:flex;">
+    <form style="display:inline-block;width: 250px";>
+        <label>your basket list</label>
+        <p>Window:</p>
+
+        <table id="window_result" class ="table_result">
+
+    <tr>
+        <th>Width</th>
+        <th>Height</th>
+        <th>quantities</th>
+        <th style="border-left: 1px solid white;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;"></th>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td></td>
+    </tr>
+        </table>
+
+        <p>Door:</p>
+        <table id="door_result" class ="table_result" >
+            <tr>
+            <th>Width</th>
+            <th>Height</th>
+            <th>quantities</th>
+                        <th style="border-left: 1px solid white;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;"></th>
+            </tr>
+             <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+
+                 <td></td>
+
+    </tr>
+
+
+        </table>
+
+    </form>
+
+    </div>
+</div>
+
+<script>
+    const input_width_window=document.getElementById("windowwidth");
+    const output_width_window=document.getElementById("window_widthoutput");
+
+
+    input_width_window.oninput=function(){
+        output_width_window.textContent=this.value;
+    }
+
+    const input_height_window=document.getElementById("windowheight");
+    const output_height_window=document.getElementById("window_heightoutput");
+
+    input_height_window.oninput=function(){
+        output_height_window.textContent=this.value;
+
+    }
+
+    const input_window_quantity=document.getElementById("window_quantity");
+    const output_quantity_window=document.getElementById("window_quantity_output");
+
+    input_window_quantity.oninput=function() {
+        output_quantity_window.textContent=this.value;
+
+    }
+
+    let defaultRemoved = false;
+
+
+function addtable(event){
+ event.preventDefault();
+    let table = document.getElementById("window_result");
+    if(!defaultRemoved){
+
+    table.deleteRow(1);
+    defaultRemoved = true;
+
+    }
+    let w=output_width_window.textContent
+        h=output_height_window.textContent
+        q=output_quantity_window.textContent
+
+
+
+    let newRow=table.insertRow();
+    let cell1 = newRow.insertCell(0);
+    let cell2 = newRow.insertCell(1);
+    let cell3 = newRow.insertCell(2);
+    let cell4 = newRow.insertCell(3)
+    cell1.textContent = w;
+    cell2.textContent = h;
+    cell3.textContent = q;
+    cell4.innerHTML='<button type="button">delete</button>'
+    newRow.querySelector("button").addEventListener("click",function(){
+    newRow.remove()
+
+
+
+    });
+
+    }
+</script>
+
+
+<script>
+
+    const colors=document.getElementsByName("color")
+    let selectcolor=""
+
+    colors.forEach(color=>{
+
+    color.addEventListener("click",function(){
+    selectcolor=this.value
+
+    })
+
+
+
+    })
+    const layerss=document.getElementsByName("layers")
+       let selectlayers=""
+    layerss.forEach(layer=>{
+
+        layer.addEventListener("click",function(){
+    selectlayers=this.value
+
+        })
+    })
+
+
+
+   document.getElementById("window").addEventListener("submit",function(event){
+    event.preventDefault();
+
+    if (!selectlayers && !selectcolor) {
+    alert("please select color and glass layer");
+    }
+
+    else if (!selectlayers) {
+
+    alert("please select layers");
+
+    }
+
+    else if (!selectcolor) {
+
+    alert("please select color");
+
+    }
+    else{
+        addtable(event);
+
+    }
+    })
+
+
+
+
+
+
+
+
+</script>
+
+
+<script>
+    const input_width_door=document.getElementById("doorwidth");
+    const output_width_door=document.getElementById("door_widthoutput");
+
+    input_width_door.oninput=function(){
+        output_width_door.textContent=this.value;
+
+    }
+
+    const input_height_door=document.getElementById("doorheight");
+    const output_height_door=document.getElementById("door_heightoutput");
+
+    input_height_door.oninput=function(){
+        output_height_door.textContent=this.value;
+
+    }
+
+    const input_door_quantity=document.getElementById("door_quantity");
+    const output_quantity_door=document.getElementById("door_quantity_output");
+
+    input_door_quantity.oninput=function() {
+        output_quantity_door.textContent=this.value;
+
+    }
+    let checkdefaultrow=true
+    document.getElementById("door").addEventListener("submit",function(event){
+    event.preventDefault();
+
+    let w_door=output_width_door.textContent
+    let h_door= output_height_door.textContent
+    let q_door=output_quantity_door.textContent
+    let table_door=document.getElementById("door_result")
+
+
+
+    if(checkdefaultrow){
+    table_door.deleteRow(1);
+
+    checkdefaultrow=false;
+
+
+    }
+    let newRow_door= table_door.insertRow();
+    let cell1_door = newRow_door.insertCell(0);
+    let cell2_door = newRow_door.insertCell(1);
+    let cell3_door = newRow_door.insertCell(2);
+    let cell4_door = newRow_door.insertCell(3);
+    cell1_door.textContent = w_door;
+    cell2_door.textContent = h_door;
+    cell3_door.textContent =q_door;
+    cell4_door.innerHTML ='<button type="button">delete</button>' ;
+    cell4_door.querySelector("button").addEventListener("click", function() {
+    newRow_door.remove();})
+    });
+
+</script>
+
+<script>
+    const windowwidth2=document.getElementById("windowwidth");
+    const windowheight=document.getElementById("windowheight");
+    console.log(typeof windowwidth2)
+
+    const window_quantity=document.getElementById("window_quantity")
+    const layers= document.getElementsByName("layers")
+    const Material= document.getElementsByName("Material")
+    console.log(typeof layers)
+
+    document.getElementById("white").addEventListener("click",function(){
+   ; windowwidth2.style.accentColor ="white";
+    windowheight.style.accentColor ="white";
+    window_quantity.style.accentColor ="white"
+    layers.forEach(a=>{
+    a.style.accentColor ="Gray";
+
+    });    Material.forEach(a=>{
+    a.style.accentColor ="Gray";
+
+    })
+    })
+      document.getElementById("red").addEventListener("click",function(){
+    windowwidth2.style.accentColor ="red";
+    windowheight.style.accentColor ="red";
+    window_quantity.style.accentColor ="red";
+    layers.forEach(a=>{
+    a.style.accentColor ="red";
+
+    })
+    ;    Material.forEach(a=>{
+    a.style.accentColor ="red";        })
+
+        })
+
+    document.getElementById("Wood brown").addEventListener("click",function(){
+   ; windowwidth2.style.accentColor ="#BD8753";
+    windowheight.style.accentColor ="#BD8753";
+    window_quantity.style.accentColor ="#BD8753";
+    layers.forEach(a=>{
+    a.style.accentColor ="#BD8753";
+
+    })
+    ;    Material.forEach(a=>{
+    a.style.accentColor ="#BD8753";        })
+
+    })
+
+
+
+
+
+</script>
+
+
+
+
+<script src="quote.js">
+
+
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<form class="paymentform" action="">
+    <label>Select payment method</label><br><br>
+    <input type="radio" id="Swish" name="paymentmethode" value="Swish"><span> </span><img src="{% static 'pages/Swish_logo.png' %}" width="25" height="25"><label for="Swish"> Swish</label><br>
+    <input type="radio" id="Paypal" name="paymentmethode" value="Paypal" ><span>   </span><img src="{% static 'pages/Symbol.png' %}" width="22" height="25"><label for="Paypal">  Paypal</label><br>
+    <input type="radio" id="Credit_card" name="paymentmethode" value="Credit card" ><span> </span><img src="{% static 'pages/113f8ccd6527c8307bc3e6f83de4253e.png' %}" width="25" height="25" style="margin-top: 5px;"><label for="Credit_card"> Credit card</label><br><br>
+    <button style="width:200px;height:20px;font-size:15px;cursor: pointer;" id="finalmethod">Place order with : </button>
+
+
+
+</form>
+
+
+<script src="quote.js"></script>
+
+<script>
+    const swish=document.getElementById("Swish").value
+    document.getElementById("Swish").addEventListener("click",function(){
+    document.getElementById("finalmethod").innerHTML=`Place order with : ${swish}`;
+
+});
+    const paypal=document.getElementById("Paypal").value
+    document.getElementById("Paypal").addEventListener("click",function(){
+    document.getElementById("finalmethod").innerHTML=`Place order with : ${paypal}`
+});
+    const Credit_card=document.getElementById("Credit_card").value
+    document.getElementById("Credit_card").addEventListener("click",function(){
+    document.getElementById("finalmethod").innerHTML=`Place order with : ${Credit_card}`
+});
+
+    document.getElementById("finalmethod").addEventListener("click",function(event){
+    event.preventDefault();
+    if (this.textContent==="Place order with : Swish"){console.log(this.textContent);
+     window.location.href="swishqrcode.html"
+
+
+    }else {
+
+     console.log(this.textContent)
+
+    }
+
+
+
+    })
+
+
+</script>
+
+{% endblock %}

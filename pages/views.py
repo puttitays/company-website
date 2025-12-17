@@ -20,3 +20,15 @@ class AboutPageView(TemplateView): # new
         context["contact_address"] = "123 Main Street"
         context["phone_number"] = "555-555-5555"
         return context
+
+def window_page_view(request) :# new
+    return render(request, "window.html")
+
+
+
+def payment_view(request) :# new
+    return render(request, "payment.html")
+
+
+def address_view(request) :# new
+    return render(request, "address.html")
